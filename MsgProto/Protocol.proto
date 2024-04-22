@@ -1,0 +1,66 @@
+syntax = "proto3";
+package Protocol;
+
+enum MsgError
+{
+	None							= 0;
+	Success							= 1;
+	Fail							= 2;
+
+	LoginFail_Account_Psw_NotMatch  = 3;
+	RegistFail_Account_Exist		= 4;
+
+}
+
+
+
+message TestMsg1Ack
+{
+	int64 id = 1;
+	repeated int32 cfgs = 2;
+}
+
+message TestMsg1Req
+{
+	int64 id = 1;
+	repeated int32 cfgs = 2;
+}
+
+message MsgAccount
+{
+	string accountName = 1;
+	string password	= 2;
+}
+
+message TestLoginReq
+{
+	string accountName = 1;
+	string password	= 2;
+}
+message TestLoginAck
+{
+	MsgAccount account = 1;
+	MsgError result	= 2;
+}
+message TestRegistReq
+{
+	string accountName = 1;
+	string password	= 2;
+}
+message TestRegistAck
+{
+	MsgAccount account = 1;
+	MsgError result	= 2;
+}
+
+message TestVersionReq
+{
+	string ver = 1;
+
+}
+
+message TestVersionAck
+{
+	string ver = 1;
+
+}
